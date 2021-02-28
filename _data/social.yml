@@ -1,9 +1,15 @@
 - title: Twitter
   url: https://twitter.com/tech3510
-  icon: fab fa-twitter
-- title: GitHub
-  url: https://github.com/tech35
-  icon: fab fa-github
+  icon: fab fa-twitter-square
+
 - title: Reddit
   url: https://reddit.com/user/tech-35
-  icon: fab fa-reddit
+  icon: fab fa-reddit-square
+
+- title: GitHub
+  url: https://github.com/tech35
+  icon: fab fa-github-square
+  
+- title: Gmail
+  url: mailto:asgharbilawal6@gmail.com
+  icon: far fa-envelope
