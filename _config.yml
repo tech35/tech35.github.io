@@ -1,3 +1,8 @@
-theme: minimal-mistakes-jekyll
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: ngzhio/jekyll-theme-hamilton
+
+
 title: Tech35 Home Page
 googleanalytics: G-DQR34FWC30
