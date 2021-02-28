@@ -6,3 +6,14 @@ remote_theme: ngzhio/jekyll-theme-hamilton
 
 title: Tech35 Home Page
 googleanalytics: G-DQR34FWC30
+
+author: "Tech35"
+
+email: "asgharbilawal6@gmail.com"
+
+skin: "daylight"
+
+paginate: "2"
+
+avatar: "https://raw.githubusercontent.com/tech35/logo-on-sites/main/23F9FABA-CB12-45F3-A251-B73A445AF8A6.jpeg?token=ARGF7HPVPE72ZNU5ECSAWL3AHM5EG"
+
