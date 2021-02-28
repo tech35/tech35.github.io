@@ -1,13 +1,13 @@
-- title: My Profile on GitHub
-  url: https://github.com/tech35
-  
-  
-- title: My Repositories on GitHub
-  url: https://github.com/tech35?tab=repositories
-  
-  
-- title: My Profile on Reddit
-  url: https://www.reddit.com/user/tech-35/
-  
-- title: My Profile on Twitter
-  url: https://www.twitter.com/tech3510
+- title: More
+  sublinks:
+    - title: tech35 on GitHub
+      url: https://github.com/tech35
+    
+    - title: tech35's Repositories on GitHub
+      url: https://github.com/tech35?tab=repositories
+    
+    - title: tech35 on Reddit
+      url: https://www.reddit.com/user/tech-35/
+      
+    - title: My Profile on Twitter
+      url: https://www.twitter.com/tech3510
