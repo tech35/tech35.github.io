@@ -9,7 +9,7 @@
 - title: GitHub
   url: https://github.com/tech35
   icon: fab fa-github-square
-  
-- title: Gmail
-  url: mailto:asgharbilawal6@gmail.com
-  icon: far fa-envelope
+
+- title: Gitter
+  url: https://gitter.im/tech35/community
+  icon: fab fa-gitter
