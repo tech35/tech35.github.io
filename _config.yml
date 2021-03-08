@@ -5,6 +5,8 @@ plugins:
 
 remote_theme: ngzhio/jekyll-theme-hamilton
 
+skin: daylight
+
 googleanalytics: G-DQR34FWC30
 
 author: "tech35"
