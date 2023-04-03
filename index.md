@@ -44,7 +44,7 @@ Contact:
 
 <a href = "https://reddit.com/user/tech35/"><img src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white"></a>  
 
-<a href = "https://app.gitter.im/#/room/#tech35_community:gitter.im"><img src="https://img.shields.io/badge/CHAT%20ON-GITTER-red?style=for-the-badge&logo=gitter"></a>
+<a href = "https://app.gitter.im/#/room/#tech35_community:gitter.im"><img src="https://img.shields.io/badge/%20GiTTER-red?style=for-the-badge&logo=gitter"></a>
 
 ----------
 
