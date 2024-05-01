@@ -1,5 +1,7 @@
 [![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=tech35&data=followers,repositories,stars,commits)](https://github.com/Jurredr/github-widgetbox)
 
+<a href = "https://tech35.github.io/other/Donations.html"><img src="https://img.shields.io/badge/Donations%20Link%20-%20black?style=for-the-badge&logo=cashapp">
+
 ----------
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ftech35.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Site+Views&edge_flat=true)](https://hits.seeyoufarm.com)
