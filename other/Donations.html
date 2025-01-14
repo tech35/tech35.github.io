@@ -36,7 +36,7 @@
             font-size: 1rem;
         }
         main {
-            flex: 1; /* Ensures it stretches to fill available space */
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -56,6 +56,7 @@
             width: 300px;
             text-align: center;
             padding: 20px;
+            position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .donation-card:hover {
@@ -78,6 +79,13 @@
             margin: 10px 0;
             word-break: break-word;
         }
+        .copy-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 10px;
+        }
         button {
             background-color: #007BFF;
             color: #fff;
@@ -91,11 +99,53 @@
         button:hover {
             background-color: #0056b3;
         }
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 25px;
+            animation: fadeInOut 1s ease-out;
+        }
+        .checkmark::after {
+            content: "✔";
+            color: #007BFF;
+            font-size: 12px;
+        }
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Footer Style */
         footer {
             text-align: center;
             padding: 20px;
+            background: #f8f8f8;
+            margin-top: 20px;
             font-size: 0.9rem;
-            color: #666;
+            color: #555;
+            width: 100%;
+            position: relative;
+            bottom: 0;
         }
     </style>
 </head>
@@ -112,7 +162,10 @@
                 <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
                 <h2>Bitcoin</h2>
                 <p id="btc-address" class="address">bc1q6e43rrc6rc8h59ag7wya4xn4wph782527d5yvs</p>
-                <button onclick="copyToClipboard('btc-address')">Copy Address</button>
+                <div class="copy-button">
+                    <button onclick="copyToClipboard('btc-address', this)">Copy Address</button>
+                    <div class="checkmark"></div>
+                </div>
             </div>
 
             <!-- Ethereum -->
@@ -120,7 +173,10 @@
                 <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
                 <h2>Ethereum</h2>
                 <p id="eth-address" class="address">0xBE53F94AAB3e19B0E5b3edbD5c54AD040d7d7Ca8</p>
-                <button onclick="copyToClipboard('eth-address')">Copy Address</button>
+                <div class="copy-button">
+                    <button onclick="copyToClipboard('eth-address', this)">Copy Address</button>
+                    <div class="checkmark"></div>
+                </div>
             </div>
 
             <!-- Solana -->
@@ -128,7 +184,10 @@
                 <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">
                 <h2>Solana</h2>
                 <p id="sol-address" class="address">Fopp4XsRegXstmCVdQwU5DbduB6q1r1CZTS8ot8tMokN</p>
-                <button onclick="copyToClipboard('sol-address')">Copy Address</button>
+                <div class="copy-button">
+                    <button onclick="copyToClipboard('sol-address', this)">Copy Address</button>
+                    <div class="checkmark"></div>
+                </div>
             </div>
         </div>
     </main>
@@ -138,10 +197,14 @@
     </footer>
 
     <script>
-        function copyToClipboard(id) {
+        function copyToClipboard(id, button) {
             const textToCopy = document.getElementById(id).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Address copied to clipboard!");
+                const checkmark = button.nextElementSibling;
+                checkmark.style.display = "flex";
+                setTimeout(() => {
+                    checkmark.style.display = "none";
+                }, 1000); // Animation duration
             }).catch(err => {
                 alert("Failed to copy: " + err);
             });
