@@ -1,61 +1,86 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Donations - Support My Work</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="manifest" href="assets/images/site.webmanifest">
-    <link rel="mask-icon" href="assets/images/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="msapplication-config" content="assets/images/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-</head>
-
-<title>tech35 - GitHub Page | Donations</title>
-<style>
-    .center {
-     text-align: center
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+        .badge {
+            margin: 10px 0;
+        }
+        .donation-section {
+            margin: 20px 0;
+        }
+        .address {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
     </style>
-
-<p class="center">
-    
+</head>
 <body>
-    <img alt="Static Badge" src="https://img.shields.io/badge/Donations%20-%20black?style=for-the-badge&logo=cashapp">
-    <br>
-    <br>
-    <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ftech35.github.io%2Fother%2FDonations.html&count_bg=%233DC8BC&title_bg=%23000000&icon=probot.svg&icon_color=%23FFFFFF&title=Site+Views&edge_flat=true"/></a>
-    <br>
-    <br>
-    All donations are appreciated and will allow me to create higher quality work.  &#128522;
-    <br>
-    <br>
-    <br>
-    <img alt="Static Badge" src="https://img.shields.io/badge/Bitcoin%20Address%3A%20-%20black?style=flat-square&logo=Bitcoin&logoColor=gold"> 
-    <br>
-    <br>
-    bc1q6e43rrc6rc8h59ag7wya4xn4wph782527d5yvs
-    <br>
-    <br>
-    <br>
-   <img alt="Static Badge" src="https://img.shields.io/badge/Ethereum%20Address%3A%20-%20black?style=flat-square&logo=Ethereum&logoColor=gray"> 
-    <br>
-    <br>
-    0xBE53F94AAB3e19B0E5b3edbD5c54AD040d7d7Ca8
-    <br>
-    <br>
-    <br>
-    <img alt="Static Badge" src="https://img.shields.io/badge/Solana%20Address%3A%20-%20black?style=flat-square&logo=Solana&logoColor=blue"> 
-    <br>
-    <br>
-    Fopp4XsRegXstmCVdQwU5DbduB6q1r1CZTS8ot8tMokN
-    <br>
+    <h1>Support My Work</h1>
+    <img class="badge" alt="Donations Badge" src="https://img.shields.io/badge/Donations%20-%20black?style=for-the-badge&logo=cashapp">
+    <p>Your support allows me to create better content and innovative projects. Thank you for your generosity! 😊</p>
 
+    <div class="donation-section">
+        <h2>Bitcoin</h2>
+        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" width="50">
+        <p id="btc-address" class="address">bc1q6e43rrc6rc8h59ag7wya4xn4wph782527d5yvs</p>
+        <button onclick="copyToClipboard('btc-address')">Copy Address</button>
+    </div>
 
+    <div class="donation-section">
+        <h2>Ethereum</h2>
+        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" width="50">
+        <p id="eth-address" class="address">0xBE53F94AAB3e19B0E5b3edbD5c54AD040d7d7Ca8</p>
+        <button onclick="copyToClipboard('eth-address')">Copy Address</button>
+    </div>
 
+    <div class="donation-section">
+        <h2>Solana</h2>
+        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" width="50">
+        <p id="sol-address" class="address">Fopp4XsRegXstmCVdQwU5DbduB6q1r1CZTS8ot8tMokN</p>
+        <button onclick="copyToClipboard('sol-address')">Copy Address</button>
+    </div>
+
+    <script>
+        function copyToClipboard(id) {
+            const textToCopy = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Copied to clipboard!");
+            }).catch(err => {
+                alert("Failed to copy: " + err);
+            });
+        }
+    </script>
 </body>
-</p>
-    
-<br>
-
-<br>
+</html>
