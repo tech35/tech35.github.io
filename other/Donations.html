@@ -4,79 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-    <title>Donations - Support My Work</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="manifest" href="assets/images/site.webmanifest">
+    <title>Support My Work - Donations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f0f4f8);
             color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
             text-align: center;
+            padding: 20px;
+            margin-top: 20px;
         }
-        .badge {
-            margin: 10px 0;
+        header h1 {
+            color: #222;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
-        .donation-section {
-            margin: 20px 0;
+        header p {
+            color: #555;
+            font-size: 1rem;
+        }
+        main {
+            flex: 1; /* Ensures it stretches to fill available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .donation-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .donation-card img {
+            width: 60px;
+            margin-bottom: 15px;
+        }
+        .donation-card h2 {
+            font-size: 1.5rem;
+            color: #333;
         }
         .address {
             font-family: 'Courier New', Courier, monospace;
-            background: #eee;
+            background: #f8f8f8;
             padding: 10px;
             border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
+            margin: 10px 0;
+            word-break: break-word;
         }
         button {
-            background-color: #333;
+            background-color: #007BFF;
             color: #fff;
             border: none;
-            padding: 10px 15px;
-            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #555;
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>Support My Work</h1>
-    <img class="badge" alt="Donations Badge" src="https://img.shields.io/badge/Donations%20-%20black?style=for-the-badge&logo=cashapp">
-    <p>Your support allows me to create better content and innovative projects. Thank you for your generosity! 😊</p>
+    <header>
+        <h1>Support My Work</h1>
+        <p>Your donations help me create better projects and content. Thank you for your support! 😊</p>
+    </header>
 
-    <div class="donation-section">
-        <h2>Bitcoin</h2>
-        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" width="50">
-        <p id="btc-address" class="address">bc1q6e43rrc6rc8h59ag7wya4xn4wph782527d5yvs</p>
-        <button onclick="copyToClipboard('btc-address')">Copy Address</button>
-    </div>
+    <main>
+        <div class="donation-container">
+            <!-- Bitcoin -->
+            <div class="donation-card">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+                <h2>Bitcoin</h2>
+                <p id="btc-address" class="address">bc1q6e43rrc6rc8h59ag7wya4xn4wph782527d5yvs</p>
+                <button onclick="copyToClipboard('btc-address')">Copy Address</button>
+            </div>
 
-    <div class="donation-section">
-        <h2>Ethereum</h2>
-        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" width="50">
-        <p id="eth-address" class="address">0xBE53F94AAB3e19B0E5b3edbD5c54AD040d7d7Ca8</p>
-        <button onclick="copyToClipboard('eth-address')">Copy Address</button>
-    </div>
+            <!-- Ethereum -->
+            <div class="donation-card">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
+                <h2>Ethereum</h2>
+                <p id="eth-address" class="address">0xBE53F94AAB3e19B0E5b3edbD5c54AD040d7d7Ca8</p>
+                <button onclick="copyToClipboard('eth-address')">Copy Address</button>
+            </div>
 
-    <div class="donation-section">
-        <h2>Solana</h2>
-        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" width="50">
-        <p id="sol-address" class="address">Fopp4XsRegXstmCVdQwU5DbduB6q1r1CZTS8ot8tMokN</p>
-        <button onclick="copyToClipboard('sol-address')">Copy Address</button>
-    </div>
+            <!-- Solana -->
+            <div class="donation-card">
+                <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">
+                <h2>Solana</h2>
+                <p id="sol-address" class="address">Fopp4XsRegXstmCVdQwU5DbduB6q1r1CZTS8ot8tMokN</p>
+                <button onclick="copyToClipboard('sol-address')">Copy Address</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Thank you for supporting my journey. Every contribution makes a difference! 💖</p>
+    </footer>
 
     <script>
         function copyToClipboard(id) {
             const textToCopy = document.getElementById(id).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Copied to clipboard!");
+                alert("Address copied to clipboard!");
             }).catch(err => {
                 alert("Failed to copy: " + err);
             });
