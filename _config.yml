@@ -1,8 +1,9 @@
 title: tech35 - GitHub Page
 
-plugins: jekyll-remote-theme
+plugins:
+  - jekyll-remote-theme
 
-remote_theme: sproogen/modern-resume-theme
+remote_theme: scottwinkler/modern-resume-theme
 
 skin: daylight
 
