@@ -1,146 +1,964 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="icon" href="assets/images/favicon.ico" sizes="any">
-        <link rel="icon" href="assets/images/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" href="assets/images/favicon-16x16.png" sizes="16x16">
-        <link rel="apple-touch-icon" href="assets/images/apple-icon.png">
-        <meta name="theme-color" content="#000000">
+    <!-- Favicon links -->
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="assets/images/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="assets/images/apple-icon.png">
+    <meta name="theme-color" content="#000000">
 
-        <!-- =====BOX ICONS===== -->
-        <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <!-- Box icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        <title>tech35 - Github Page</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">tech35</a>
-                </div>
+    <title>tech35 - Software Developer</title>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="https://github.com/tech35?tab=repositories" target = "_blank" class="nav__link">My Work</a></li>
-                    </ul>
-                </div>
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Variables */
+        :root {
+            --accent-color: #059669;
+            --accent-color-light: #10b981;
+            --accent-gradient: linear-gradient(90deg, #059669, #10b981);
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --nav-height: 4.5rem;
+        }
+        
+        /* Base */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background gradients */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+            background: radial-gradient(circle at 0% 0%, #065f46, transparent 40%),
+                        radial-gradient(circle at 100% 100%, #047857, transparent 40%);
+            opacity: 0.6;
+        }
+        
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+        }
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+        /* Glass effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .green-gradient-text {
+            background: linear-gradient(90deg, #059669, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -0.5rem;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hey,<br>I am <span class="home__title-color">tech35</span><br> Software Dev</h1>
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.5);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
 
-                    <!-- Add this later
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+        }
+        
+        .nav__logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav__menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav__list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav__link {
+            position: relative;
+            font-weight: 500;
+            padding: 0.5rem 0;
+        }
+        
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav__link:hover::after,
+        .nav__link.active::after {
+            width: 100%;
+        }
+        
+        .nav__toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-                    <a href="https://tech35.github.io/other/Donations.html" target ="_blank" class="button">Support My Work</a>
+        /* Home */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--nav-height);
+        }
+        
+        .home__container {
+            position: relative;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .home__content {
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .home__title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .home__subtitle {
+            font-size: 1.2rem;
+            color: rgba(248, 250, 252, 0.8);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .home__social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            justify-content: center;
+        }
+        
+        .home__social-icon {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .home__social-icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .home__img-container {
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .home__img-container-second {
+            position: absolute;
+            top: 15%;
+            right: 20%;
+            transform: translate(50%, -50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .home__blob {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            opacity: 0.7;
+        }
 
-                    -->
+        /* About */
+        .about__container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem;
+        }
+        
+        .about__img {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about__img img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        .about__img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about__img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, var(--accent-color), transparent);
+            opacity: 0.3;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .about__content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about__title {
+            font-size: 2rem;
+        }
+        
+        .about__text {
+            color: rgba(248, 250, 252, 0.8);
+        }
 
-                </div>
+        /* Skills */
+        .skills__container {
+            padding: 3rem;
+        }
+        
+        .skills__content {
+            text-align: center;
+        }
+        
+        .skills__categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skills__category {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .skills__category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skills__category-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--accent-color-light);
+        }
+        
+        .skills__category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+        
+        .skills__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            background: rgba(5, 150, 105, 0.15);
+        }
+        
+        .skill-item i {
+            font-size: 1.1rem;
+            color: var(--accent-color-light);
+        }
 
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer__title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer__icon {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer__icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer__copy {
+            color: rgba(248, 250, 252, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 992px) {
+            .home__img-container {
+                width: 450px;
+                height: 450px;
+                left: 15%;
+                top: 12%;
+            }
+            
+            .home__img-container-second {
+                width: 450px;
+                height: 450px;
+                right: 15%;
+                top: 12%;
+            }
+            
+            .home__title {
+                font-size: 3.5rem;
+            }
+            
+            .about__container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about__img {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav__menu {
+                position: fixed;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.9);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                transition: top 0.3s ease;
+                padding: 2rem 0;
+                text-align: center;
+                z-index: 900;
+            }
+            
+            .nav__menu.show-menu {
+                top: var(--nav-height);
+            }
+            
+            .nav__list {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .nav__toggle {
+                display: block;
+            }
+            
+            .home__title {
+                font-size: 2.5rem;
+            }
+            
+            .about__container,
+            .skills__container {
+                padding: 2rem;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .home__title {
+                font-size: 2rem;
+            }
+            
+            .home__img-container {
+                width: 300px;
+                height: 300px;
+                left: 10%;
+                top: 10%;
+            }
+            
+            .home__img-container-second {
+                width: 300px;
+                height: 300px;
+                right: 10%;
+                top: 10%;
+            }
+            
+            .about__img {
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="bg-noise"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">tech35</a>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="https://github.com/tech35?tab=repositories" target="_blank" class="nav__link">My Work</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section class="home section" id="home">
+            <div class="container">
+                <div class="home__container">
+                    <div class="home__img-container">
+                        <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#059669"/>
+                                    <stop offset="100%" style="stop-color:#10b981"/>
+                                </linearGradient>
+                            </defs>
+                            <mask id="mask0" mask-type="alpha">
+                                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path fill="url(#gradient1)" d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <div class="home__img-container-second">
+                        <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#047857"/>
+                                    <stop offset="100%" style="stop-color:#34d399"/>
+                                </linearGradient>
+                            </defs>
+                            <mask id="mask1" mask-type="alpha">
+                                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            </mask>
+                            <g mask="url(#mask1)">
+                                <path fill="url(#gradient2)" d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <div class="home__content reveal">
+                        <h1 class="home__title">
+                            Hey there,<br>
+                            I'm <span class="red-gradient-text">tech35</span><br>
+                         
+                        </h1>
+                        
+                        <p class="home__subtitle">
+                            I'm a Python and Rust developer driven by a passion for building transformative technologies. Always learning, always creating.
+                        </p>
+                        
+                        <a href="https://github.com/tech35?tab=repositories" target="_blank" class="btn">
+                            View My Projects
+                        </a>
+                        
+                        <div class="home__social">
+                            <a href="https://github.com/tech35" target="_blank" class="home__social-icon">
+                                <i class='bx bxl-github'></i>
+                            </a>
+                            <!-- Add these when ready
+                            <a href="#" target="_blank" class="home__social-icon">
+                                <i class='bx bxl-twitter'></i>
+                            </a>
+                            <a href="#" target="_blank" class="home__social-icon">
+                                <i class='bx bxl-discord'></i>
+                            </a>
+                            -->
+                        </div>
+                    </div>
                 
-
-                <div class="home__social">
-                    <a href="https://github.com/tech35" target = "_blank" class="home__social-icon"><i class='bx bxl-github'></i></a>
-
-                    <!-- Add these later
-                    <a href="add twitter link" target = "_blank" class="home__social-icon"><i class='bx bxl-twitter' ></i></a>
-                    <a href="add discord link" target = "_blank" class="home__social-icon"><i class='bx bxl-discord' ></i></a>
-                    -->
-
-                </div>
-
-                <div class="home__img">
+                <div class="home__img-container">
                     <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6366f1"/>
+                                <stop offset="100%" style="stop-color:#818cf8"/>
+                            </linearGradient>
+                        </defs>
                         <mask id="mask0" mask-type="alpha">
                             <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
                         </mask>
                         <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"/>
+                            <path fill="url(#gradient)" d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
                         </g>
                     </svg>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
-
-                <div class="about__container bd-grid">
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <h2 class="section-title gradient-text reveal">About Me</h2>
+            
+            <div class="container">
+                <div class="about__container card reveal">
                     <div class="about__img">
-                        <img src="https://avatars.githubusercontent.com/u/72114077?v=4" alt="">
+                        <img src="https://avatars.githubusercontent.com/u/72114077?v=4" alt="tech35 profile">
                     </div>
                     
-                    <div>
-                        <h2 class="about__subtitle">I am tech35</h2>
-                        <p class="about__text">I'm Bilawal Asghar (tech35), a developer skilled in Python and currently focused on mastering Rust for high-performance and system-level programming. I'm always exploring new technologies to enhance my skills and contribute to the tech community.</p>
+                    <div class="about__content">
+                        <h3 class="about__title gradient-text">I am tech35</h3>
                         
-                        <br>
-
-                        <p class="about__text"> Below are my skills, I specialize in Python, Rust, Java, and C, with expertise in frameworks like Flask, Django, and FastAPI, along with AWS, PostgreSQL, Docker, and machine learning with PyTorch. I also have experience in frontend technologies (React, JavaScript, HTML, CSS), version control (Git/GitHub), and tools like PyCharm, Anaconda, and Linux/Ubuntu for efficient development and deployment.</p>
-
-                    </div>                                   
+                        <p class="about__text">
+                            I'm Bilawal Asghar (tech35), a developer skilled in Python and currently focused on mastering Rust for high-performance and system-level programming. I'm always exploring new technologies to enhance my skills and contribute to the tech community.
+                        </p>
+                        
+                        <p class="about__text">
+                            I specialize in Python, Rust, Java, and C, with expertise in frameworks like Flask, Django, and FastAPI, along with AWS, PostgreSQL, Docker, and machine learning with PyTorch. I also have experience in frontend technologies (React, JavaScript, HTML, CSS), version control (Git/GitHub), and tools like PyCharm, Anaconda, and Linux/Ubuntu for efficient development and deployment.
+                        </p>
+                    </div>
                 </div>
-            </section>
-
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <p align = "center">
-
-                
-                    <img src="https://skillicons.dev/icons?i=python,rust,java,cpp,c,flask,django,fastapi,postgresql,aws,docker,linux,ubuntu,pytorch,react,git,github,matlab,js,html,css,go,swift,pycharm,anaconda&perline=5&theme=dark" alt="My Skills">
-
-                    <br>
-                    <br>
-                    
-                    
-                                
-                  
-                </p>
-
-
-                </div>
-            </section>
-
-
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">tech35</p>
-            <div class="footer__social">
-                <a href="https://github.com/tech35" class="footer__icon"><i class='bx bxl-github' ></i></a>
-
-                <!-- Add later
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-discord' ></i></a>
-                -->
-                
             </div>
-            <p class="footer__copy">&#169; tech35. All rigths reserved. Credit to Bedimcode for the template.</p>
-        </footer>
+        </section>
 
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <h2 class="section-title gradient-text reveal">Skills</h2>
+            
+            <div class="container">
+                <div class="skills__container card reveal">
+                    <div class="skills__content">
+                        <div class="skills__categories">
+                            <div class="skills__category">
+                                <h3 class="skills__category-title">Languages</h3>
+                                <div class="skills__list">
+                                    <div class="skill-item"><i class='bx bxl-python'></i> Python</div>
+                                    <div class="skill-item"><i class='bx bxl-rust'></i> Rust</div>
+                                    <div class="skill-item"><i class='bx bxl-java'></i> Java</div>
+                                    <div class="skill-item"><i class='bx bx-code-alt'></i> C/C++</div>
+                                    <div class="skill-item"><i class='bx bxl-javascript'></i> JavaScript</div>
+                                    <div class="skill-item"><i class='bx bx-code-curly'></i> Go</div>
+                                    <div class="skill-item"><i class='bx bxl-swift'></i> Swift</div>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__category">
+                                <h3 class="skills__category-title">Frameworks & Libraries</h3>
+                                <div class="skills__list">
+                                    <div class="skill-item"><i class='bx bx-server'></i> Flask</div>
+                                    <div class="skill-item"><i class='bx bx-server'></i> Django</div>
+                                    <div class="skill-item"><i class='bx bx-server'></i> FastAPI</div>
+                                    <div class="skill-item"><i class='bx bxl-react'></i> React</div>
+                                    <div class="skill-item"><i class='bx bx-brain'></i> PyTorch</div>
+                                    <div class="skill-item"><i class='bx bxl-html5'></i> HTML5</div>
+                                    <div class="skill-item"><i class='bx bxl-css3'></i> CSS3</div>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__category">
+                                <h3 class="skills__category-title">Tools & Technologies</h3>
+                                <div class="skills__list">
+                                    <div class="skill-item"><i class='bx bxl-aws'></i> AWS</div>
+                                    <div class="skill-item"><i class='bx bxl-postgresql'></i> PostgreSQL</div>
+                                    <div class="skill-item"><i class='bx bxl-docker'></i> Docker</div>
+                                    <div class="skill-item"><i class='bx bxl-git'></i> Git</div>
+                                    <div class="skill-item"><i class='bx bxl-github'></i> GitHub</div>
+                                    <div class="skill-item"><i class='bx bxl-linux'></i> Linux/Ubuntu</div>
+                                    <div class="skill-item"><i class='bx bx-code-block'></i> PyCharm</div>
+                                    <div class="skill-item"><i class='bx bx-math'></i> MATLAB</div>
+                                    <div class="skill-item"><i class='bx bx-analyse'></i> Anaconda</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="footer__title">tech35</h2>
+            
+            <div class="footer__social">
+                <a href="https://github.com/tech35" target="_blank" class="footer__icon">
+                    <i class='bx bxl-github'></i>
+                </a>
+                <!-- Add these when ready
+                <a href="#" target="_blank" class="footer__icon">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="#" target="_blank" class="footer__icon">
+                    <i class='bx bxl-discord'></i>
+                </a>
+                -->
+            </div>
+            
+            <p class="footer__copy">&#169; tech35. All rights reserved.</p>
+        </div>
+    </footer>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
+    
+    <script>
+        // Mobile Menu Toggle
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.querySelectorAll('.nav__link');
+        
+        // Show/Hide Menu
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('show-menu');
+            });
+        }
+        
+        // Close menu when clicking a nav link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        });
+        
+        // Change Header Background on Scroll
+        function scrollHeader() {
+            const header = document.getElementById('header');
+            if (this.scrollY >= 80) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        window.addEventListener('scroll', scrollHeader);
+        
+        // Active Link on Scroll
+        function scrollActive() {
+            const scrollY = window.pageYOffset;
+            
+            navLinks.forEach(link => {
+                const sectionId = link.getAttribute('href');
+                if (sectionId === '#' || !sectionId.startsWith('#')) return;
+                
+                const section = document.querySelector(sectionId);
+                if (!section) return;
+                
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', scrollActive);
+        
+        // Reveal Elements on Scroll
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', reveal);
+        reveal(); // Trigger on page load
+        
+        // ScrollReveal Animation
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 1500,
+            delay: 400,
+            reset: false
+        });
+        
+        sr.reveal('.section-title', {delay: 200});
+        sr.reveal('.home__content', {origin: 'left'});
+        sr.reveal('.home__img-container', {origin: 'right'});
+        sr.reveal('.about__img', {origin: 'left'});
+        sr.reveal('.about__content', {origin: 'right'});
+        sr.reveal('.skills__container', {delay: 600});
+    </script>
+</body>
 </html>
